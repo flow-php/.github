@@ -23,7 +23,14 @@ The reasons behind creating this project can be explained in few [tweets](https:
 * [String](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/StringEntry.php)
 * [Structure](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/StructureEntry.php)
 
+### Transfomers
+
+Flow ETL provides a rich set of official transfomers, please find them all in [flow-php/etl-transformer](https://github.com/flow-php/etl-transformer/#description) 
+repository.
+
 ### Available Adapters: 
+
+The role of adapter is usually to provide Extractors and Loaders, occasionally adapters might also bring some specific Transformers.
 
 <table style="text-align:center">
 <thead>
