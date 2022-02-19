@@ -41,7 +41,7 @@ To get familiar with basic ETL Api, please look into [flow-php/etl repository](h
 
 ### Transfomers
 
-Flow ETL provides a rich set of official transfomers, please find them all in [flow-php/etl-transformer](https://github.com/flow-php/etl-transformer/#description) 
+Flow ETL provides a rich set of official transfomers, please find them all in [flow-php/etl](https://github.com/flow-php/etl/#transformers) 
 repository.
 
 ### Available Adapters: 
