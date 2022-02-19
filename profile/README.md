@@ -80,7 +80,7 @@ The role of adapter is usually to provide Extractors and Loaders, occasionally a
   <tr>
       <td><a href="https://github.com/flow-php/etl-adapter-json">JSON</a></td>
       <td>✅</td>
-      <td>N/A</td>
+      <td>✅</td>
   </tr>
   <tr>
       <td><a href="https://github.com/flow-php/etl-adapter-xml">XML</a></td>
