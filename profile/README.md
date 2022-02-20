@@ -1,15 +1,31 @@
 # Flow PHP 
 
-Flow is a PHP based, strongly typed (on data but also on API level) ETL (Extract Transform Load) framework. 
+Flow is a PHP based, strongly typed ETL (Extract Transform Load) data processing library. 
+
+## Usage
+
+**Extract** from the Source, **Transform**, **Load** to the Sink. 
+
+```php
+<?php 
+
+ETL::extract($extractor)
+    ->transform($transformer1)
+    ->transform($transformer2)
+    ->transform($transformer3)
+    ->load($loader)
+    ->run();
+```
 
 The reasons behind creating this project can be explained in few [tweets](https://twitter.com/norbert_tech/status/1484863793280786439?s=21). 
-
-By default ETL is a synchronouse, memory safe process. 
-In some cases, it might become handy to process data asynchronously, Flow is not yet fully ready for it but we are doing good progress with [etl-async](https://github.com/flow-php/etl-async) abstraction and [reactphp adapter](https://github.com/flow-php/etl-async-adapter-reactphp).
-
 To get familiar with basic ETL Api, please look into [flow-php/etl repository](https://github.com/flow-php/etl), everything else is listed below. 
 
-### Building blocks
+## Asynchronous Processing
+
+* [etl-async](https://github.com/flow-php/etl-async)
+  * [etl-async-adapter-reactphp](https://github.com/flow-php/etl-async-adapter-reactphp)
+
+## Building blocks
 
 * Rows - Immutable colllection of `Row` objects. 
 * Row - Immutable, strongly typed collection of `Entry` objects. 
@@ -26,25 +42,27 @@ To get familiar with basic ETL Api, please look into [flow-php/etl repository](h
 * 8.0 - ✅
 * 8.1 - ⚙ (work in progress)
 
-### Available Entry Types
+## Available Entry Types
 
-* [Array](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/ArrayEntry.phpp)
-* [Boolean](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/BooleanEntry.php)
-* [Collection](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/CollectionEntry.php)
-* [DateTime](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry//DateTimeEntry.php)
-* [Float](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/FloatEntry.php)
-* [Integer](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/IntegerEntry.php)
-* [Null](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/NullEntry.php)
-* [Object](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/ObjectEntry.php)
-* [String](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/StringEntry.php)
-* [Structure](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/StructureEntry.php)
+* [array](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/ArrayEntry.phpp)
+* [boolean](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/BooleanEntry.php)
+* [collection](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/CollectionEntry.php)
+* [datetime](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry//DateTimeEntry.php)
+* [float](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/FloatEntry.php)
+* [json](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/JsonEntry.php)
+* [integer](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/IntegerEntry.php)
+* [null](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/NullEntry.php)
+* [object](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/ObjectEntry.php)
+* [string](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/StringEntry.php)
+* [structure](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/StructureEntry.php)
+* [xml](https://github.com/flow-php/etl-adapter-xml/blob/1.x/src/Flow/ETL/Row/Entry/XMLEntry.php)
 
-### Transfomers
+## Transfomers
 
 Flow ETL provides a rich set of official transfomers, please find them all in [flow-php/etl](https://github.com/flow-php/etl/#transformers) 
 repository.
 
-### Available Adapters: 
+## Available Adapters: 
 
 The role of adapter is usually to provide Extractors and Loaders, occasionally adapters might also bring some specific Transformers.
 
