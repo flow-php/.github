@@ -7,14 +7,22 @@ Flow is a PHP based, strongly typed ETL (Extract Transform Load) data processing
 **Extract** from the Source, **Transform**, **Load** to the Sink. 
 
 ```php
-<?php 
+<?php
 
-ETL::extract($extractor)
-    ->transform($transformer1)
-    ->transform($transformer2)
-    ->transform($transformer3)
-    ->load($loader)
-    ->run();
+use Flow\ETL\DSL\From;
+use Flow\ETL\DSL\Transform;
+use Flow\ETL\DSL\To;
+use Flow\ETL\ETL;
+use Flow\ETL\Memory\ArrayMemory;
+use Flow\ETL\Row\Sort;
+use Flow\ETL\Rows;
+
+$array = new ArrayMemory();
+
+ETL::read(From::rows(new Rows()))
+    ->rows(Transform::keep(['id', 'name', 'status']))
+    ->sortBy(Sort::desc('status'))
+    ->write(To::memory($array);
 ```
 
 The reasons behind creating this project can be explained in few [tweets](https://twitter.com/norbert_tech/status/1484863793280786439?s=21). 
