@@ -12,14 +12,15 @@ Flow is a PHP based, strongly typed ETL (Extract Transform Load) data processing
 use Flow\ETL\DSL\From;
 use Flow\ETL\DSL\Transform;
 use Flow\ETL\DSL\To;
-use Flow\ETL\ETL;
+use Flow\ETL\Flow;
 use Flow\ETL\Memory\ArrayMemory;
 use Flow\ETL\Row\Sort;
 use Flow\ETL\Rows;
 
 $array = new ArrayMemory();
 
-ETL::read(From::rows(new Rows()))
+(new Flow())
+    ->read(From::rows(new Rows(...)))
     ->rows(Transform::keep(['id', 'name', 'status']))
     ->sortBy(Sort::desc('status'))
     ->write(To::memory($array);
@@ -28,6 +29,18 @@ ETL::read(From::rows(new Rows()))
 The reasons behind creating this project can be explained in few [tweets](https://twitter.com/norbert_tech/status/1484863793280786439?s=21). 
 To get familiar with basic ETL Api, please look into [flow-php/etl repository](https://github.com/flow-php/etl), everything else is listed below. 
 
+## Features
+
+* constant memory consumption
+* caching
+* reading from any data source
+* writing to any data source
+* rich collection of data transformation functions
+* grouping & aggregating
+* sorting 
+* displaying datasets as ASCII table
+* validation against schema
+
 ## Asynchronous Processing
 
 * [etl-async](https://github.com/flow-php/etl-async)
@@ -35,6 +48,7 @@ To get familiar with basic ETL Api, please look into [flow-php/etl repository](h
 
 ## Building blocks
 
+* DataFrame - Lazy data processing frame. 
 * Rows - Immutable colllection of `Row` objects. 
 * Row - Immutable, strongly typed collection of `Entry` objects. 
 * Entry - Immutable, stronly typed object representing cell in a row. 
