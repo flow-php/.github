@@ -37,6 +37,7 @@ To get familiar with basic ETL Api, please look into [flow-php/etl repository](h
 * writing to any data source
 * rich collection of data transformation functions
 * grouping & aggregating
+* joins
 * sorting 
 * displaying datasets as ASCII table
 * validation against schema
@@ -60,9 +61,7 @@ To get familiar with basic ETL Api, please look into [flow-php/etl repository](h
 
 ### Supported PHP versions
 
-* 7.4 - ✅
-* 8.0 - ✅
-* 8.1 - ⚙ (work in progress)
+* 8.1 - ✅
 
 ## Available Entry Types
 
