@@ -44,8 +44,7 @@ To get familiar with basic ETL Api, please look into [flow-php/etl repository](h
 
 ## Asynchronous Processing
 
-* [etl-async](https://github.com/flow-php/etl-async)
-  * [etl-async-adapter-reactphp](https://github.com/flow-php/etl-async-adapter-reactphp)
+* [etl-adapter-amphp](https://github.com/flow-php/etl-adapter-amphp)
 
 ## Building blocks
 
