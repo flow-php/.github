@@ -1,6 +1,6 @@
 # Flow PHP 
 
-Flow is a PHP based, strongly typed ETL (Extract Transform Load) data processing library. 
+Flow is a PHP based, strongly typed ETL (Extract Transform Load), asynchronous data processing library with constant memory consumption. 
 
 ## Usage
 
