@@ -32,6 +32,7 @@ To get familiar with basic ETL Api, please look into [flow-php/etl repository](h
 ## Features
 
 * constant memory consumption
+* asynchronous data processing
 * caching
 * reading from any data source
 * writing to any data source
@@ -53,9 +54,9 @@ To get familiar with basic ETL Api, please look into [flow-php/etl repository](h
 * Rows - Immutable colllection of `Row` objects. 
 * Row - Immutable, strongly typed collection of `Entry` objects. 
 * Entry - Immutable, stronly typed object representing cell in a row. 
-* **E**xtractor - Memory safe, Data Source returning \Generator, yielding `Rows` to the `Pipeline`
+* **E**xtractor (Reader) - Memory safe, Data Source returning \Generator, yielding `Rows` to the `Pipeline`
 * **T**ransformer - Data transformer receiving and returning `Rows` (in most cases transformer), one instance of `Rows` at once.  
-* **L**oader - Memory safe representation of Data Sink, responsibility of Loader is to write `Rows` into destination storage, one at time. 
+* **L**oader (Writer) - Memory safe representation of Data Sink, responsibility of Loader is to write `Rows` into destination storage, one at time. 
 * Pipeline - Interface representing ETL process, each received `Rows` instanced is pased through all `Pipes`, also responsible for error handling. 
 * Pipe - Loader of Transformer instance existing in `Pipes` collection.  
 
