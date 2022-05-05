@@ -72,6 +72,7 @@ To get familiar with basic ETL Api, please look into [flow-php/etl repository](h
 * [datetime](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry//DateTimeEntry.php)
 * [float](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/FloatEntry.php)
 * [json](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/JsonEntry.php)
+* [list](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/ListEntry.php)
 * [integer](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/IntegerEntry.php)
 * [null](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/NullEntry.php)
 * [object](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/ObjectEntry.php)
