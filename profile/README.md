@@ -78,7 +78,6 @@ To get familiar with basic ETL Api, please look into [flow-php/etl repository](h
 * [object](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/ObjectEntry.php)
 * [string](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/StringEntry.php)
 * [structure](https://github.com/flow-php/etl/blob/1.x/src/Flow/ETL/Row/Entry/StructureEntry.php)
-* [xml](https://github.com/flow-php/etl-adapter-xml/blob/1.x/src/Flow/ETL/Row/Entry/XMLEntry.php)
 
 ## Transfomers
 
