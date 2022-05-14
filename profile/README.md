@@ -125,7 +125,7 @@ The role of adapter is usually to provide Extractors and Loaders, occasionally a
       <td>✅</td>
   </tr>
   <tr>
-      <td><a href="https://github.com/flow-php/etl-adapter-avro">Parquet</a></td>
+      <td><a href="https://github.com/flow-php/etl-adapter-avro">Avro</a></td>
       <td>✅</td>
       <td>✅</td>
   </tr>    
