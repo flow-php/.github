@@ -1,4 +1,4 @@
-![img](flow_php_banner_02_2022.png)
+![img](/profile/flow_php_banner_02_2022.png)
 
 Flow is a PHP based, strongly typed ETL (Extract Transform Load), asynchronous data processing library with constant memory consumption. 
 
