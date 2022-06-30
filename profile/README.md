@@ -56,7 +56,7 @@ To get familiar with basic ETL Api, please look into [flow-php/etl repository](h
 * DataFrame - Lazy data processing frame. 
 * Rows - Immutable colllection of `Row` objects. 
 * Row - Immutable, strongly typed collection of `Entry` objects. 
-* Entry - Immutable, stronly typed object representing cell in a row. 
+* Entry - Immutable, strongly typed object representing cell in a row. 
 * **E**xtractor (Reader) - Memory safe, Data Source returning \Generator, yielding `Rows` to the `Pipeline`
 * **T**ransformer - Data transformer receiving and returning `Rows` (in most cases transformer), one instance of `Rows` at once.  
 * **L**oader (Writer) - Memory safe representation of Data Sink, responsibility of Loader is to write `Rows` into destination storage, one at time. 
