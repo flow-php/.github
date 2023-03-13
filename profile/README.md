@@ -66,6 +66,7 @@ To get familiar with basic ETL Api, please look into [flow-php/etl repository](h
 ### Supported PHP versions
 
 * 8.1 - ✅
+* 8.2 - ✅
 
 ## Available Entry Types
 
