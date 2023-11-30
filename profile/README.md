@@ -92,6 +92,7 @@ To get familiar with basic ETL Api, please look into [flow-php/etl repository](h
 
 * 8.1 - ✅
 * 8.2 - ✅
+* 8.3 - ✅
 
 ## Available Data Types
 
