@@ -1,12 +1,24 @@
 ![img](/profile/flow_php_banner_02_2022.png)
 
-Flow is a PHP based, strongly typed ETL (Extract Transform Load), asynchronous data processing library with constant memory consumption. 
+Flow is a PHP-based, strongly typed ETL (Extract, Transform, Load) and asynchronous data processing framework with low memory consumption thanks to its generator-based architecture.
 
-## Usage
+[![Latest Stable Version](https://poser.pugx.org/flow-php/flow/v)](https://packagist.org/packages/flow-php/flow)
+[![Latest Unstable Version](https://poser.pugx.org/flow-php/flow/v/unstable)](https://packagist.org/packages/flow-php/flow)
+[![License](https://poser.pugx.org/flow-php/flow/license)](https://packagist.org/packages/flow-php/flow)
+[![Test Suite](https://github.com/flow-php/flow/actions/workflows/test-suite.yml/badge.svg?branch=1.x)](https://github.com/flow-php/flow/actions/workflows/test-suite.yml)
 
-**Extract** from the Source, **Transform**, **Load** to the Sink. 
+- 📈 [Project Roadmap](https://github.com/orgs/flow-php/projects/1)
+- 📜 [Documentation](docs/introduction.md)
+- 🛠️ [Contributing](CONTRIBUTING.md)
+- 🚧 [Upgrading](UPGRADE.md)
 
-## Usage
+Supported PHP versions: [![PHP 8.1](https://img.shields.io/badge/php-~8.1-8892BF.svg)](https://php.net/) [![PHP 8.2](https://img.shields.io/badge/php-~8.2-8892BF.svg)](https://php.net/) [![PHP 8.3](https://img.shields.io/badge/php-~8.3-8892BF.svg)](https://php.net/)
+
+---
+
+## Usage Example
+
+Thanks to its rich collection of adapters, Flow can read and write data between sources and destinations while applying defined transformations on the fly.
 
 ```php
 <?php
@@ -14,13 +26,13 @@ Flow is a PHP based, strongly typed ETL (Extract Transform Load), asynchronous d
 declare(strict_types=1);
 
 use function Flow\ETL\Adapter\Parquet\{from_parquet, to_parquet};
-use function Flow\ETL\DSL\{data_frame, lit, ref, sum, to_output};
+use function Flow\ETL\DSL\{data_frame, lit, ref, sum, to_output, overwrite};
 use Flow\ETL\Filesystem\SaveMode;
 
 require __DIR__ . '/vendor/autoload.php';
 
 data_frame()
-    ->read(from_parquet(__FLOW_DATA__ . '/orders_flow.parquet'))
+    ->read(from_parquet(__DIR__ . '/orders_flow.parquet'))
     ->select('created_at', 'total_price', 'discount')
     ->withEntry('created_at', ref('created_at')->cast('date')->dateFormat('Y/m'))
     ->withEntry('revenue', ref('total_price')->minus(ref('discount')))
@@ -32,8 +44,8 @@ data_frame()
     ->drop('revenue_sum')
     ->write(to_output(truncate: false))
     ->withEntry('created_at', ref('created_at')->toDate('Y/m'))
-    ->mode(SaveMode::Overwrite)
-    ->write(to_parquet(__FLOW_OUTPUT__ . '/daily_revenue.parquet'))
+    ->saveMode(overwrite())
+    ->write(to_parquet(__DIR__ . '/daily_revenue.parquet'))
     ->run();
 ```
 
@@ -55,94 +67,6 @@ $ php daily_revenue.php
 +------------+---------------+
 10 rows
 ```
-
-The reasons behind creating this project can be explained in few [tweets](https://twitter.com/norbert_tech/status/1484863793280786439?s=21). 
-To get familiar with basic ETL Api, please look into [flow-php/etl repository](https://github.com/flow-php/etl), everything else is listed below. 
-
-### [Usage Examples](https://github.com/flow-php/flow/tree/1.x/examples)
-
-## Features
-
-* constant memory consumption
-* caching
-* reading from any data source
-* writing to any data source
-* rich collection of data transformation functions
-* grouping & aggregating
-* remote files processing 
-* joins
-* sorting 
-* displaying datasets as ASCII table
-* validation against schema
-
-## Building blocks
-
-* DataFrame - Lazy data processing frame. 
-* Rows - Immutable colllection of `Row` objects. 
-* Row - Immutable, strongly typed collection of `Entry` objects. 
-* Entry - Immutable, strongly typed object representing cell in a row. 
-* **E**xtractor (Reader) - Memory safe, Data Source returning \Generator, yielding `Rows` to the `Pipeline`
-* **T**ransformer - Data transformer receiving and returning `Rows` (in most cases transformer), one instance of `Rows` at once.  
-* **L**oader (Writer) - Memory safe representation of Data Sink, responsibility of Loader is to write `Rows` into destination storage, one at time. 
-* Pipeline - Interface representing ETL process, each received `Rows` instanced is pased through all `Pipes`, also responsible for error handling. 
-* Pipe - Loader of Transformer instance existing in `Pipes` collection.
-* Function - transformation that might happen on a single row, single entry, rows or group of rows
-
-### Supported PHP versions
-
-* 8.1 - ✅
-* 8.2 - ✅
-* 8.3 - ✅
-
-## Available Data Types
-
-* [array](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/Entry/ArrayEntry.phpp)
-* [boolean](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/Entry/BooleanEntry.php)
-* [datetime](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/Entry/DateTimeEntry.php)
-* [enum](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/Entry/EnumEntry.php)
-* [float](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/Entry/FloatEntry.php)
-* [integer](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/Entry/IntegerEntry.php)
-* [json](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/Entry/JsonEntry.php)
-* [list](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/Entry/ListEntry.php)
-* [map](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/Entry/MapEntry.php)
-* [null](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/Entry/NullEntry.php)
-* [object](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/Entry/ObjectEntry.php)
-* [string](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/Entry/StringEntry.php)
-* [structure](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/Entry/StructureEntry.php)
-* [uuid](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/Entry/UuidEntry.php)
-* [xml](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/EntryXmlEntry.php)
-* [xml_node](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Row/Entry/XmlNodeEntry.php)
-
-## Available Adapter
-
-- [ETL](src/core/etl/README.md)
-- Adapters
-    - [avro](https://github.com/flow-php/flow/tree/1.x/src/adapter/etl-adapter-avro/README.md)
-    - [chartjs](https://github.com/flow-php/flow/tree/1.x/src/adapter/etl-adapter-chartjs/README.md)
-    - [csv](https://github.com/flow-php/flow/tree/1.x/src/adapter/etl-adapter-csv/README.md)
-    - [doctrine](https://github.com/flow-php/flow/tree/1.x/src/adapter/etl-adapter-doctrine/README.md)
-    - [elasticsearch](https://github.com/flow-php/flow/tree/1.x/src/adapter/etl-adapter-elasticsearch/README.md)
-    - [filesystem](https://github.com/flow-php/flow/tree/1.x/src/adapter/etl-adapter-filesystem/README.md)
-    - [google sheet](https://github.com/flow-php/flow/tree/1.x/src/adapter/etl-adapter-google-sheet/README.md)
-    - [http](https://github.com/flow-php/flow/tree/1.x/src/adapter/etl-adapter-http/README.md)
-    - [json](https://github.com/flow-php/flow/tree/1.x/src/adapter/etl-adapter-json/README.md)
-    - [logger](https://github.com/flow-php/flow/tree/1.x/src/adapter/etl-adapter-logger/README.md)
-    - [meilisearch](https://github.com/flow-php/flow/tree/1.x/src/adapter/etl-adapter-meilisearch/README.md)
-    - [parquet](https://github.com/flow-php/flow/tree/1.x/src/adapter/etl-adapter-parquet/README.md)
-    - [text](https://github.com/flow-php/flow/tree/1.x/src/adapter/etl-adapter-text/README.md)
-    - [xml](https://github.com/flow-php/flow/tree/1.x/src/adapter/etl-adapter-xml/README.md)
-- Libraries
-    - [array-dot](https://github.com/flow-php/flow/tree/1.x/src/lib/array-dot/README.md)
-    - [doctrine-dbal-bulk](https://github.com/flow-php/flow/tree/1.x/src/lib/doctrine-dbal-bulk/README.md)
-    - [dremel](https://github.com/flow-php/flow/tree/1.x/src/lib/dremel/README.md)
-    - [parquet](https://github.com/flow-php/flow/tree/1.x/src/lib/parquet/README.md)
-    - [parquet-viewer](https://github.com/flow-php/flow/tree/1.x/src/lib/parquet-viewer/README.md)
-    - [snappy](https://github.com/flow-php/flow/tree/1.x/src/lib/snappy/README.md)
-
-## Transformation Functions
-
-Flow ETL provides a rich set of official functions to transform data, please find them all in [flow-php/etl](https://github.com/flow-php/flow/tree/1.x/src/core/etl/src/Flow/ETL/Function) 
-repository.
 
 ## Sponsors 
 
