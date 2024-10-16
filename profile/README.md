@@ -8,7 +8,7 @@ Flow is a PHP-based, strongly typed ETL (Extract, Transform, Load) and asynchron
 [![Test Suite](https://github.com/flow-php/flow/actions/workflows/test-suite.yml/badge.svg?branch=1.x)](https://github.com/flow-php/flow/actions/workflows/test-suite.yml)
 
 - 📈 [Project Roadmap](https://github.com/orgs/flow-php/projects/1)
-- 📜 [Documentation](docs/introduction.md)
+- 📜 [Documentation](https://github.com/flow-php/flow/blob/1.x/docs/introduction.md)
 - 🛠️ [Contributing](CONTRIBUTING.md)
 - 🚧 [Upgrading](UPGRADE.md)
 
