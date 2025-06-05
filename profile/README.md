@@ -8,9 +8,9 @@ Flow is a PHP-based, strongly typed ETL (Extract, Transform, Load) and asynchron
 [![Test Suite](https://github.com/flow-php/flow/actions/workflows/test-suite.yml/badge.svg?branch=1.x)](https://github.com/flow-php/flow/actions/workflows/test-suite.yml)
 
 - 📈 [Project Roadmap](https://github.com/orgs/flow-php/projects/1)
-- 📜 [Documentation](https://flow-php.comhttps://flow-php.com/documentation/)
-- 🛠️ [Contributing](https://github.com/flow-php/flow/blob/1.xhttps://flow-php.com/documentation/contributing.md)
-- 🚧 [Upgrading](https://github.com/flow-php/flow/blob/1.x/UPGRADE.md)
+- 📜 [Documentation](https://flow-php.com/documentation/)
+- 🛠️ [Contributing](https://flow-php.com/documentation/contributing/)
+- 🚧 [Upgrading](https://flow-php.com/documentation/upgrading/)
 
 
 > [!TIP]
@@ -30,11 +30,11 @@ Flow PHP is sponsored by:
 
 The most up-to-date examples are available at https://flow-php.com 
 
-- [DataFrame](https://flow-php.comhttps://flow-php.com/documentation/example/data_frame/data_frame/#example)
-- [Reading data from Array](https://flow-php.comhttps://flow-php.com/documentation/example/data_reading/array/#example)
-- [Reading data from CSV](https://flow-php.comhttps://flow-php.com/documentation/example/data_reading/csv/#example)
-- [Joins](https://flow-php.comhttps://flow-php.com/documentation/example/join/join/#example)
-- [Aggregatios](https://flow-php.comhttps://flow-php.com/documentation/example/aggregations/group_by/#example)
+- [DataFrame](https://flow-php.com/documentation/components/core/core/)
+- [Reading data from Array](https://flow-php.com/data_reading/#example)
+- [Reading data from CSV](https://flow-php.com/data_reading/csv/#example)
+- [Joins](https://flow-php.com/join/#example)
+- [Aggregations](https://flow-php.com/aggregations/#example)
 - and many more...
 
 ## Packages
