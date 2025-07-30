@@ -1,4 +1,4 @@
-![img](/profile/flow_php_banner_02_2022.png)
+![img](/profile/flow_php_banner_01_2025.png)
 
 Flow is a PHP-based, strongly typed ETL (Extract, Transform, Load) and asynchronous data processing framework with low memory consumption thanks to its generator-based architecture.
 
